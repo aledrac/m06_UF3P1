@@ -19,10 +19,10 @@ class Persistencia_agenda_mongodb(IAgenda_persistencia):
     
     #Guarda un nuevo evento
     def save_evento(self, evento: Evento) -> Evento:
-        passquery = "db.agenda.insert({ _id: '1', })"
+        query = "db.agenda.insert({ _id: '', duracio: '', titulo: '', tag: '', ubicacion: '', desc: ''})"
     #Actualiza un evento existente
     def actu_evento(self, id: int, evento: Evento) -> Evento:
-        pass
+        query = ""
     
     #Elimina un evento existente
     def delete_evento(self, id: int) -> Evento:
