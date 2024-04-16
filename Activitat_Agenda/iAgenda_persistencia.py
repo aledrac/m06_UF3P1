@@ -1,29 +1,30 @@
 from abc import ABC, abstractmethod
 
 from typing import List
+from eventos import Evento 
 
 class IAgendaDigital(ABC):
-    @abstractmethod
-    def list_events(self) -> List[dict]:
-        """Da una lista de todos los eventos."""
-        pass
-
-    @abstractmethod
-    def event_id_list(self, id: int) -> List[dict]:
-        """Da una lista paginada de eventos según el ID."""
+    
+    @abstractmethod #Da una lista de eventos a partir de su tag
+    def read_evento_tag(self, tag: str) -> List[Evento]:
         pass
     
-    @abstractmethod
-    def save_event(self, evento: dict) -> dict:
-        """Guarda un nuevo evento."""
+    @abstractmethod #Da una lista de todos los eventos
+    def lista_eventos(self) -> List[Evento]:
         pass
 
-    @abstractmethod
-    def actu_event(self, id: str, evento: dict) -> dict:
-        """Actualiza un evento existente."""
+    @abstractmethod #Da una evento por id
+    def evento_id(self, id: int) -> Evento:
+        pass
+    
+    @abstractmethod #Guarda un nuevo evento
+    def save_evento(self, evento: Evento) -> Evento:
         pass
 
-    @abstractmethod
-    def read_event_tag(self, id: str) -> dict:
-        """Lee un evento a partir de su tag."""
+    @abstractmethod #Actualiza un evento existente
+    def actu_evento(self, id: int, evento: Evento) -> Evento:
+        pass
+    
+    @abstractmethod #Elimina un evento existente
+    def delete_evento(self, id: int) -> Evento:
         pass
