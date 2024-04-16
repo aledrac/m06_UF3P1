@@ -1,7 +1,7 @@
 import datetime
 
 class Evento:
-    def __init__(self, id: int,  fecha: str, duracion: str, titulo: str, tag: str, ubicacion: str, descripcion: str ) -> None:
+    def __init__(self, id: int,  fecha: str, duracion: str, titulo: str, tag: str, ubicacion: str, descripcion="" ) -> None:
         self._id = id
         self._fecha = fecha
         self._duracion = duracion
