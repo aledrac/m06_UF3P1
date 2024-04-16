@@ -11,7 +11,7 @@ class Evento:
         self._descripcion = descripcion
     
     @property
-    def id(self) -> str:
+    def id(self) -> int:
         return self._id
     
     @id.setter
