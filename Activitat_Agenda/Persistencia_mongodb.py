@@ -31,13 +31,15 @@ class Persistencia_agenda_mongodb(IAgenda_persistencia):
     
     #Guarda un nuevo evento
     def save_evento(self, evento: Evento) -> Evento:
-        self.conection.evento.insert(evento)
+        self.conection.evento.insert_one(evento)
         #query = "db.agenda.insert({ _id: '', duracio: '', titulo: '', tag: '', ubicacion: '', desc: ''})"
+        
     #Actualiza un evento existente
     def actu_evento(self, id: int, evento: Evento) -> Evento:
-        query = ""
+        self.conection.evento.update_one()
+        #query = ""
     
     #Elimina un evento existente
     def delete_evento(self, id: int) -> Evento:
-        self.conection.evento.remove(id)
+        self.conection.evento.delete_one(id)
         #query = "db.agenda.remove({ _id: '1'})"
