@@ -22,7 +22,8 @@ class Persistencia_agenda_mongodb(IAgendaDigital):
         lista_tag = self.conection.evento.find({ "tag" : tag})
         eventos = []
         for e in lista_tag:
-            eventos.append(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7]) 
+            evento = Evento(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7])
+            eventos.append(evento) 
         return eventos
     
     #Da una lista de todos los eventos
@@ -30,7 +31,8 @@ class Persistencia_agenda_mongodb(IAgendaDigital):
         lista_evento  = self.conection.evento.find()
         eventos = []
         for e in lista_evento:
-            eventos.append(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7]) 
+            evento = Evento(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7])
+            eventos.append(evento)
         return eventos
 
     #Da una evento por id
@@ -46,19 +48,19 @@ class Persistencia_agenda_mongodb(IAgendaDigital):
                 ubicacion=eventoId["ubicacion"],
                 desc=eventoId["descripcion"]
             )
-        return e
+            return e
     
     #Guarda un nuevo evento
-    def save_evento(self, evento: Evento) -> Evento:
+    def save_evento(self, evento: Evento):
         self.conection.evento.insert_one(evento.to_dict())
         #query = "db.agenda.insert({ _id: '', duracio: '', titulo: '', tag: '', ubicacion: '', desc: ''})"
         
     #Actualiza un evento existente
-    def actu_evento(self, id: int, evento: Evento) -> Evento:
+    def actu_evento(self, id: int, evento: Evento):
         self.conection.evento.update_one({"_id": ObjectId(id)},
                                         {"$set": evento.to_dict()})
     
     #Elimina un evento existente
-    def delete_evento(self, id: int) -> Evento:
+    def delete_evento(self, id: int):
         self.conection.evento.delete_one({"_id": ObjectId(id)})
         #query = "db.agenda.remove({ _id: '1'})"
