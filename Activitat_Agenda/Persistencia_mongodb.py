@@ -1,16 +1,16 @@
 from typing import List
 
 from bson import ObjectId
-from iAgenda_persistencia import IAgenda_persistencia
+from iAgenda_persistencia import IAgendaDigital
 from Agenda import Agenda
 from Eventos import Evento 
 import pymongo
 
-class Persistencia_agenda_mongodb(IAgenda_persistencia):
+class Persistencia_agenda_mongodb(IAgendaDigital):
     
-    pwd = "wv2B3otgf6QKgptC"
-    user = "2023davidhernandez"
-    cluster = "cluster0.efsedoq"
+    pwd = "Angel"
+    user = "Angel"
+    cluster = "cluster0.rvcmuq8"
     uri = "mongodb+srv://" + \
             user + ":" + pwd + \
             "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
