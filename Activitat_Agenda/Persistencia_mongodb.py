@@ -1,7 +1,7 @@
 from typing import List
 
 from bson import ObjectId
-from iAgenda_persistencia import IAgendaDigital
+from iEvento_persistencia import IAgendaDigital
 from Agenda import Agenda
 from Eventos import Evento 
 import pymongo
