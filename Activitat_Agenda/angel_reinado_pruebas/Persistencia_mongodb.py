@@ -1,10 +1,10 @@
 from typing import List
-from iAgenda_persistencia import IAgenda_persistencia
-from agenda import Agenda
-from eventos import Evento
+from iEvento_persistencia import IEventoDigital
+from Agenda import Agenda
+from Eventos import Evento
 import pymongo
 
-class Persistencia_agenda_mongodb(IAgenda_persistencia):
+class Persistencia_agenda_mongodb(IEventoDigital):
 
     uri = ""
     conexionPortable = pymongo.MongoClient(uri)
