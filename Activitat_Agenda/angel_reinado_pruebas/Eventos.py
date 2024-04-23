@@ -67,3 +67,7 @@ class Evento:
         self._descripcion = descripcion
         
     
+    def to_dict(self):
+        return {"_id": self._id, "duracion": self.duracion, "titulo": self.titulo, "tag": self.tag, "ubicacion": self.ubicacion, "desc": self.desc}
+        
+    

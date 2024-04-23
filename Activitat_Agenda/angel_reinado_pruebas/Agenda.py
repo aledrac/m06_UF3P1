@@ -1,4 +1,3 @@
-
 class Agenda:
     def __init__(self, agenda: list) -> None:
         self._agenda = agenda

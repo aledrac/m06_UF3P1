@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from typing import List
-from eventos import Evento 
+from Eventos import Evento 
 
 class IAgendaDigital(ABC):
     
