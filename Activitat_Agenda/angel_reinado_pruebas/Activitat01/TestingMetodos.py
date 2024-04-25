@@ -28,13 +28,3 @@ class TestPersistenciaAgendaMongoDB(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-#####
-# eventos de una agenta que dispone un equipo
-# 
-# 
-# 
-# -clase agenda
-        #-clase usuario
-        #-Clase esdeveniments
-#####

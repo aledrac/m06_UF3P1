@@ -66,4 +66,7 @@ class Persistencia_agenda_mongodb(IAgendaDigital):
         #query = "db.agenda.remove({ _id: '1'})"
     
     def main():
-        
+        print("AAAA")
+
+if __name__=="__main__":
+    Persistencia_agenda_mongodb.main()

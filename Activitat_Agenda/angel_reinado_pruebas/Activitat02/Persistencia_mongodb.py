@@ -1,7 +1,7 @@
 from typing import List
 
 from bson import ObjectId
-from iAgenda_persistencia import IAgendaDigital
+from iEvento_persistencia import IAgendaDigital
 from Agenda import Agenda
 from Eventos import Evento 
 import pymongo
@@ -64,3 +64,6 @@ class Persistencia_agenda_mongodb(IAgendaDigital):
     def delete_evento(self, id: int):
         self.conection.evento.delete_one({"_id": ObjectId(id)})
         #query = "db.agenda.remove({ _id: '1'})"
+    
+    def main():
+        
