@@ -1,6 +1,7 @@
 import datetime
+from iEvento_persistencia import IEventoDigital
 
-class Evento:
+class Evento(IEventoDigital):
     def __init__(self, id: int,  fecha: str, duracion: str, titulo: str, tag: str, ubicacion: str, descripcion="" ) -> None:
         self._id = id
         self._fecha = fecha
@@ -65,5 +66,9 @@ class Evento:
     @descripcion.setter
     def descripcion(self, descripcion:str) -> None:
         self._descripcion = descripcion
+        
+    
+    def to_dict(self):
+        return {"_id": self._id, "duracion": self.duracion, "titulo": self.titulo, "tag": self.tag, "ubicacion": self.ubicacion, "desc": self.desc}
         
     

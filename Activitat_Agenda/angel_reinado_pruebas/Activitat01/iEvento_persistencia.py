@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
 from typing import List
-from eventos import Evento 
+from Eventos import Evento 
 
-class IAgendaDigital(ABC):
+class IEventoDigital(ABC):
     
     @abstractmethod #Da una lista de eventos a partir de su tag
     def read_evento_tag(self, tag: str) -> List[Evento]:

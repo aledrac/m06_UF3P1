@@ -4,7 +4,6 @@ class Agenda:
         self.listaEvents=listaEvents
         self.listaUserS=listaUserS
         
-        
     @property
     def name(self) -> str:
         return self.name
