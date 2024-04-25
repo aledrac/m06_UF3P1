@@ -4,7 +4,6 @@ class Usuario():
         self.apellido = apellido
         self.mail = mail
         self.pwd = pwd
-    
 
     @property
     def name(self) -> str:
@@ -38,7 +37,3 @@ class Usuario():
     def pwd(self, pwd:str):
         self.pwd = pwd
         
-    def to_dict(self):
-        return {"name": self.name, "apellido": self.apellido, "mail": self.mail, "pwd": self.pwd}
-        
-    

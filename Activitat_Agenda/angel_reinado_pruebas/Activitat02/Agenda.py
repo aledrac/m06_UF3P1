@@ -4,6 +4,7 @@ class Agenda:
         self.listaEvents=listaEvents
         self.listaUserS=listaUserS
         
+        
     @property
     def name(self) -> str:
         return self.name
@@ -33,7 +34,4 @@ class Agenda:
     
     def toList(self, evento) -> list:
         self.agenda.append(evento)
-        
-    def to_dict(self):
-        return {"name": self.name, "listaEvents": self.listaEvents, "listaUserS": self.listaUserS}
     

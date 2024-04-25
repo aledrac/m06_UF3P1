@@ -1,10 +1,35 @@
+import pymongo
+
 class Usuario():
+    uri=""
+
     def __init__(self, name:str, apellido:str, mail:str, pwd:str) -> None:
         self.name = name
         self.apellido = apellido
         self.mail = mail
         self.pwd = pwd
+        self.uri = "mongodb+srv://Angel:Angel@cluster0.rvcmuq8.mongodb.net/"
     
+    #region ///////Region de modulos funcionales
+    def guarda_usuario(self,usuariosList) -> bool:
+        #Operacion principal
+        client = pymongo.MongoClient(self.uri)
+        collection = client.Usuarios
+        collection.insert_many(usuariosList)
+        #Operacion existe y devuelve
+        return False
+
+    def delete_usuario(self):
+        pass
+
+    def update_usuario(self):
+        pass
+
+    def muestra_usuario(self):
+        pass
+    #endregion
+    
+    #region ///////Region getters & setters
 
     @property
     def name(self) -> str:
@@ -37,8 +62,5 @@ class Usuario():
     @pwd.setter
     def pwd(self, pwd:str):
         self.pwd = pwd
-        
-    def to_dict(self):
-        return {"name": self.name, "apellido": self.apellido, "mail": self.mail, "pwd": self.pwd}
-        
     
+    #endregion
