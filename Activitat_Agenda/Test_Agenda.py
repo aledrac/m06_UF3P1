@@ -1,10 +1,11 @@
 import unittest
+from Persistencia_mongo_Agenda import Persistencia_mongo_Agenda
 from Agenda import Agenda
 from Eventos import Evento
-from Persistencia_mongo_Agenda import Persistencia_mongo_Agenda
 
-class TestPersistenciaAgenda(unittest.TestCase):
+class TestAgenda(unittest.TestCase):
     
+
     def test_save_agenda(self):
         pwd = "Angel"
         user = "Angel"
@@ -18,6 +19,7 @@ class TestPersistenciaAgenda(unittest.TestCase):
         eventos = [["28-04-2024", "4 horas", "practica m6", "estudio", "bcn", "test para mongodb"],["05-02-2024", "10 horas", "practica m7", "estudio", "barcelona", "aplicació mobile"]]
         inserted = persistencia.save_agenda(name, nameUser, eventos)
         self.assertTrue(inserted)
+
         
     def test_get_agenda(self):
         pwd = "Angel"
@@ -73,5 +75,6 @@ class TestPersistenciaAgenda(unittest.TestCase):
         
         
         
-if __name__ == '__main__':
+
+if __name__ == '_main_':
     unittest.main()
