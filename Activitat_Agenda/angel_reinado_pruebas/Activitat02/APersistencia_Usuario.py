@@ -5,13 +5,13 @@ from AUsuario import AUsuario
 class Usuario_persistencia():
     uri = "mongodb+srv://Angel:Angel@cluster0.rvcmuq8.mongodb.net/"
     
-    def guarda_usuario(self, AUsuario) -> AUsuario:
+    def guarda_usuario(self, usuario: AUsuario) -> AUsuario:
         con = self.conectar_usuario()
         db = con.miBaseDeDatos
         col = db.Usuarios
 
-        guardado = self.col.insert_one(AUsuario.to_dict())
-        return guardado
+        guardado = col.insert_one(usuario.to_dict())
+        return guardado.asknowledged()
 
     
     def muestra_usuario(self,valor) -> AUsuario:
