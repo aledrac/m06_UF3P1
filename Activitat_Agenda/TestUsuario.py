@@ -24,7 +24,6 @@ class AtestsUsuario(unittest.TestCase):
         
         
         mostraremos = persist.muestra_usuario("Lucas")
-        print("XXXXXXXXXXXXX",mostraremos["nombre"])
         self.assertEqual(mostraremos["nombre"],u1.name)
 
     def test_delete(self):
