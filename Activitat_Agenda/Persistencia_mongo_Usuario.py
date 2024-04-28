@@ -1,40 +1,48 @@
 from typing import List
-from iUsuario_persistencia import IUsuarioPersistencia
-import pymongo 
+import pymongo
+import pymongo.errors
 from Usuario import Usuario
 
-class Persistencia_mongo_Usuario(IUsuarioPersistencia):
-    pwd = "david"
-    user = "david"
-    cluster = "cluster0.rvcmuq8"
-    uri = "mongodb+srv://" + \
-            user + ":" + pwd + \
-            "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
-    def __init__(self, uri) :
-        self.conection = pymongo.MongoClient(uri)
-        self.db = self.conection.agendadb
-        self.coleccio = self.db.usuario
+class Usuario_persistencia():
+    uri = "mongodb+srv://Angel:Angel@cluster0.rvcmuq8.mongodb.net/"
     
-    
-    def read_user(self) -> List[Usuario]:
-        return list(self.coleccio.find())
-    
-    def read_user_valor(self, valor):
-        return list(self.coleccio.find(valor))
-    
-    def save_user(self, user: Usuario):
-        user_dict = user.to_dict()
-        ins = self.coleccio.insert_one(user_dict)
-        return ins.asknowledged()
+    def guarda_usuario(self, usuario: Usuario) -> bool:#XX
+        con = self.conectar_usuario()
+        db = con.agendadb
+        col = db.usuario
 
-    def udpate_user(self, name, user: Usuario):
-        filtro = { "name": name }  
-        actualizacion = { "$set": user.to_dict() }  
-        mod = self.coleccio.update_many(filtro, actualizacion)
-        return mod.modified_count()
+        userDiccionario = usuario.to_dict()
+        guardado = col.insert_one(userDiccionario)
+        return guardado.acknowledged
+
     
+    def muestra_usuario(self,valor: str) -> Usuario: #XX
+        con = self.conectar_usuario()
+        db = con.agendadb
+        col = db.usuario
+
+        return col.find_one(valor)
+
+    def update_usuario(self,user:Usuario,nombre:str) -> int: #XX
+        con = self.conectar_usuario()
+        db = con.agendadb
+        col = db.usuario
+
+        filtro = {"nombre":nombre}
+        update = { "$set":user.to_dict() }
+        mod = col.update_many(filtro,update)
+
+        return mod.modified_count
     
-    def delete_user(self, valor):
-        deleted = self.coleccio.delete_one(valor)
+    def delete_usuario(self,valor:str) -> Usuario:
+        con = self.conectar_usuario()
+        db = con.agendadb
+        col = db.usuario
+
+        deleted = col.delete_one(valor)
         return deleted.deleted_count()
+
+    def conectar_usuario(self):
+        client = pymongo.MongoClient(self.uri)
+        return client
     

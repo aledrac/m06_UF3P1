@@ -1,27 +1,23 @@
 from abc import ABC, abstractmethod
 
 from typing import List
-from Usuario import Usuario
+from Usuario import AUsuario
 
 class IUsuarioPersistencia(ABC):
     
     @abstractmethod 
-    def read_user(self, valor) -> List[Usuario]:
-        pass
-
-    @abstractmethod 
-    def read_user_valor(self, valor) -> Usuario:
+    def guarda_usuario(self, lista) -> AUsuario:
         pass
     
     @abstractmethod 
-    def save_user(self, user: Usuario):
+    def muestra_usuario(self,valor) -> AUsuario:
         pass
 
     @abstractmethod 
-    def update_user(self, name, user: Usuario):
+    def update_usuario(self,nuevoUser,valor) -> AUsuario:
         pass
     
     @abstractmethod 
-    def delete_user(self, valor):
+    def delete_usuario(self,valor) -> AUsuario:
         pass
  
