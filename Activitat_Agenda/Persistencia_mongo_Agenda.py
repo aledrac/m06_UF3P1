@@ -11,27 +11,27 @@ class Persistencia_mongo_Agenda(IAgenda_Persistencia):
         self.conection = pymongo.MongoClient(uri)
         self.db = self.conection.agendadb
         self.coleccio = self.db.agenda 
-        self.coleccio2 = self.db.usuario
     
     
     def read_agenda(self) -> List[Agenda]:
         return list(self.coleccio.find())
     
-    def read_agenda_id(self, name: str) -> List[Agenda]:
-        return list(self.coleccio.find({"name": name}))
+    def read_agenda_id(self, name: str):
+        return self.coleccio.find({"name": name})
     
-    def save_agenda(self, name:str, nameUser:str, evento:List[Evento]):
-        user = self.coleccio2.find({"name": nameUser})
-        agenda = Agenda(name, user, evento)
+    def save_agenda(self, agenda:Agenda):
+        #user_cursor = self.coleccio2.find({"name": nameUser})
+        #user = list(user_cursor)
+        #if not user: return "no s'ha trobat l'usuari"
+        #agenda = Agenda(name, user, evento)
         agenda_dict = agenda.to_dict()
         ins = self.coleccio.insert_one(agenda_dict)
         return ins.acknowledged
     
     def update_agenda(self, name: str, agenda: Agenda):
-        agenda_existeix = self.coleccio.find_one({"name": name})
         filtro = { "name": name }  
         actualizacion = { "$set": agenda.to_dict() }  
-        mod = self.coleccio.update_many(filtro, actualizacion)
+        mod = self.coleccio.update_one(filtro, actualizacion)
         return mod.modified_count
     
     def delete_agenda(self, name: str):

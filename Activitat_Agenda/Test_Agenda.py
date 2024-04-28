@@ -1,7 +1,5 @@
 import unittest
-from Usuario import Usuario
 from Persistencia_mongo_Agenda import Persistencia_mongo_Agenda
-from Persistencia_mongo_Usuario import Usuario_persistencia
 from Agenda import Agenda
 from Eventos import Evento
 
@@ -16,10 +14,13 @@ class TestAgenda(unittest.TestCase):
             user + ":" + pwd + \
             "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
         persistencia = Persistencia_mongo_Agenda(uri)
-        name ="agenda1"
-        nameUser = "david"
-        eventos = [["28-04-2024", "4 horas", "practica m6", "estudio", "bcn", "test para mongodb"],["05-02-2024", "10 horas", "practica m7", "estudio", "barcelona", "aplicació mobile"]]
-        inserted = persistencia.save_agenda(name, nameUser, eventos)
+        #name ="agenda1"
+        #nameUser = "david"
+        #eventos = [["28-04-2024", "4 horas", "practica m6", "estudio", "bcn", "test para mongodb"],["05-02-2024", "10 horas", "practica m7", "estudio", "barcelona", "aplicació mobile"]]
+        agenda1 = Agenda("agenda1", 
+                      [["25-03-2024", "10 horas", "practica m6", "estudio", "barcelona", "test para mongodb"]], 
+                      [["david", "hernandez", "david@gmail.com", "daviddavid"]])
+        inserted = persistencia.save_agenda(agenda1)
         self.assertTrue(inserted)
 
         
@@ -55,7 +56,7 @@ class TestAgenda(unittest.TestCase):
             user + ":" + pwd + \
             "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
         persistencia = Persistencia_mongo_Agenda(uri)
-        agenda1 = Agenda("agenda1", 
+        agenda1 = Agenda("agenda2", 
                       [["25-03-2024", "10 horas", "practica m6", "estudio", "barcelona", "test para mongodb"]], 
                       [["david", "hernandez", "david@gmail.com", "daviddavid"]])
         name = "agenda1"
@@ -70,7 +71,7 @@ class TestAgenda(unittest.TestCase):
             user + ":" + pwd + \
             "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
         persistencia = Persistencia_mongo_Agenda(uri)
-        name = "agenda1"
+        name = "agenda2"
         deleted = persistencia.delete_agenda(name)
         self.assertTrue(deleted)
         
@@ -78,5 +79,5 @@ class TestAgenda(unittest.TestCase):
         
         
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     unittest.main()
