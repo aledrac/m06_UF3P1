@@ -15,8 +15,8 @@ class Persistencia_mongo_Usuario(IUsuarioPersistencia):
     def read_user(self, r) -> List[Usuario]:
         return list(self.conection.find())
     
-    def read_user_valor(self, valor) -> Usuario:
-        return self.conection.find(valor)
+    def read_user_valor(self, valor):
+        return list(self.conection.find(valor))
     
     def save_user(self, user: Usuario):
         user_dict = user.to_dict()
