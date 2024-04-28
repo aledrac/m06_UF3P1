@@ -21,7 +21,13 @@ class Usuario_persistencia():
         db = con.agendadb
         col = db.usuario
 
-        return col.find_one(valor)
+        user_dict = col.find_one({"nombre": valor})
+
+        if user_dict:
+            usuario = Usuario(user_dict["nombre"], user_dict["apellido"], user_dict["email"], user_dict["contraseña"])
+            return usuario
+        else:
+            return None 
 
     def update_usuario(self,user:Usuario,nombre:str) -> int: #XX
         con = self.conectar_usuario()

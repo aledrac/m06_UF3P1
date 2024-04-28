@@ -19,10 +19,13 @@ class AtestsUsuario(unittest.TestCase):
 
     def test_read(self):
         persist = Usuario_persistencia()
+        u1 = Usuario("Lucas","Helbingens","Lucas@gmail.com","1234")
+        persist.guarda_usuario(u1)
         
-        agregamos = persist.guarda_usuario(Usuario("Lucas","Helbingens","Lucas@gmail.com","1234"))
+        
         mostraremos = persist.muestra_usuario("Lucas")
-        self.assertEquals(mostraremos,agregamos)
+        print("XXXXXXXXXXXXX",mostraremos["nombre"])
+        self.assertEqual(mostraremos["nombre"],u1.name)
 
     def test_delete(self):
         persist = Usuario_persistencia()
