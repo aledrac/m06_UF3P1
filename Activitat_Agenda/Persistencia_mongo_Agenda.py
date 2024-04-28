@@ -15,19 +15,13 @@ class Persistencia_mongo_Agenda(IAgenda_Persistencia):
     
     
     def read_agenda(self) -> List[Agenda]:
-        ag = list(self.coleccio.find())
-        if ag is None: return "No s'han trobat agendes"
-        return ag
+        return list(self.coleccio.find())
     
     def read_agenda_id(self, name: str) -> List[Agenda]:
-        ag = list(self.coleccio.find({"name": name}))
-        if ag is None: return "No s'han trobat agendes"
-        return ag
+        return list(self.coleccio.find({"name": name}))
     
     def save_agenda(self, name:str, nameUser:str, evento:List[Evento]):
         user = self.coleccio2.find({"name": nameUser})
-        if user is None:
-            return "El usuario no existe"
         agenda = Agenda(name, user, evento)
         agenda_dict = agenda.to_dict()
         ins = self.coleccio.insert_one(agenda_dict)
@@ -35,8 +29,6 @@ class Persistencia_mongo_Agenda(IAgenda_Persistencia):
     
     def update_agenda(self, name: str, agenda: Agenda):
         agenda_existeix = self.coleccio.find_one({"name": name})
-        if agenda_existeix  is None:
-            return "La agenda no existe"
         filtro = { "name": name }  
         actualizacion = { "$set": agenda.to_dict() }  
         mod = self.coleccio.update_many(filtro, actualizacion)
