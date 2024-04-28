@@ -15,7 +15,7 @@ class AtestsUsuario(unittest.TestCase):
         agregamos = persist.guarda_usuario(AUsuario("Angel","Helbingens","angel@gmail.com","1234"))
         resultado = persist.update_usuario(AUsuario("Daniel","Casas","Daniel@gmail.com","1234"),"Angel")
 
-        resultado.assertTrue(resultado)
+        self.assertEquals(resultado,0)
         pass
 
     def test_read(self):
