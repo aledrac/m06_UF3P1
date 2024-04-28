@@ -1,5 +1,4 @@
 from typing import List
-from iAgenda_persistencia import IAgenda_Persistencia
 import pymongo 
 from Agenda import Agenda
 
