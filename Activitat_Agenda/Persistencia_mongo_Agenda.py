@@ -25,7 +25,7 @@ class Persistencia_mongo_Agenda(IAgenda_Persistencia):
     def save_agenda(self, agenda: Agenda):
         agenda_dict = agenda.to_dict()
         ins = self.coleccio.insert_one(agenda_dict)
-        return ins.asknowledged()
+        return ins.acknowledged
     
     def update_agenda(self, name: str, agenda: Agenda):
         filtro = { "name": name }  
