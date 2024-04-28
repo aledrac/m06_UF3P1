@@ -14,13 +14,13 @@ class IUsuarioPersistencia(ABC):
         pass
     
     @abstractmethod #Guarda un nuevo evento
-    def save_user(self, user: Usuario) -> Usuario:
+    def save_user(self, user: Usuario):
         pass
 
     @abstractmethod #Actualiza un evento existente
-    def update_user(self, name, user: Usuario) -> Usuario:
+    def update_user(self, name, user: Usuario):
         pass
     
     @abstractmethod #Elimina un evento existente
-    def delete_user(self, valor) -> Usuario:
+    def delete_user(self, valor):
         pass
