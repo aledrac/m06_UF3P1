@@ -13,7 +13,7 @@ class Persistencia_mongo_Agenda(IAgenda_Persistencia):
     conection = pymongo.MongoClient(uri)
     
     def read_agenda(self) -> List[Agenda]:
-        return self.conection.find()
+        return list(self.conection.agenda.find())
     
     def read_agenda_id(self, name: str) -> Agenda:
         return self.conection.find(name)

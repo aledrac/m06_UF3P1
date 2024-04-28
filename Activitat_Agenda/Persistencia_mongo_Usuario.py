@@ -13,7 +13,7 @@ class Persistencia_mongo_Usuario(IUsuarioPersistencia):
     conection = pymongo.MongoClient(uri)
     
     def read_user(self, r) -> List[Usuario]:
-        return self.conection.find()
+        return list(self.conection.find())
     
     def read_user_valor(self, valor) -> Usuario:
         return self.conection.find(valor)
