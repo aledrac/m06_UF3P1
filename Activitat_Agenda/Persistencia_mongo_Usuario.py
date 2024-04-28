@@ -21,9 +21,7 @@ class Usuario_persistencia():
         db = con.agendadb
         col = db.usuario
 
-        user_dict = col.find_one({"nombre": valor})
-
-        return user_dict
+        return col.find({"name":valor})
 
     def update_usuario(self,user:Usuario,nombre:str) -> int: #XX
         con = self.conectar_usuario()
@@ -41,8 +39,8 @@ class Usuario_persistencia():
         db = con.agendadb
         col = db.usuario
 
-        deleted = col.delete_one(valor)
-        return deleted.deleted_count()
+        deleted = col.delete_one({"name":valor})
+        return deleted.deleted_count
 
     def conectar_usuario(self):
         client = pymongo.MongoClient(self.uri)
