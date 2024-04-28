@@ -17,14 +17,3 @@ class IEventoDigital(ABC):
     def evento_id(self, id: int) -> Evento:
         pass
     
-    @abstractmethod #Guarda un nuevo evento
-    def save_evento(self, evento: Evento) -> Evento:
-        pass
-
-    @abstractmethod #Actualiza un evento existente
-    def actu_evento(self, id: int, evento: Evento) -> Evento:
-        pass
-    
-    @abstractmethod #Elimina un evento existente
-    def delete_evento(self, id: int) -> Evento:
-        pass

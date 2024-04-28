@@ -12,15 +12,4 @@ class IUsuarioPersistencia(ABC):
     @abstractmethod #Da una evento por id
     def read_user_valor(self, valor) -> Usuario:
         pass
-    
-    @abstractmethod #Guarda un nuevo evento
-    def save_user(self, user: Usuario) -> Usuario:
-        pass
-
-    @abstractmethod #Actualiza un evento existente
-    def update_user(self, name, user: Usuario) -> Usuario:
-        pass
-    
-    @abstractmethod #Elimina un evento existente
-    def delete_user(self, valor) -> Usuario:
-        pass
+ 
