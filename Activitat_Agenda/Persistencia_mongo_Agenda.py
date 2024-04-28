@@ -24,14 +24,15 @@ class Persistencia_mongo_Agenda(IAgenda_Persistencia):
         user = self.coleccio2.find_one({"name": nameUser})
         if user is None:
             return "El usuario no existe"
-        #user = Usuario(self.coleccio.find({"name":nameUser}))
-        #user_dict = list(user.to_dict())
         agenda = Agenda(name, user, evento)
         agenda_dict = agenda.to_dict()
         ins = self.coleccio.insert_one(agenda_dict)
         return ins.acknowledged
     
     def update_agenda(self, name: str, agenda: Agenda):
+        agenda_existeix = self.coleccio.find_one({"name": name})
+        if agenda_existeix  is None:
+            return "La agenda no existe"
         filtro = { "name": name }  
         actualizacion = { "$set": agenda.to_dict() }  
         mod = self.coleccio.update_many(filtro, actualizacion)
