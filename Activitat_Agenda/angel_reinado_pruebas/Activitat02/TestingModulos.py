@@ -24,6 +24,11 @@ class TestUsuarioPersistencia(unittest.TestCase):
         resultado = self.persistencia.guarda_usuario(usuarios)
         self.assertEqual(resultado, 2)
     
+    def test_muestra_usuario(self):
+        user1 = iUsuario_persistencia("Angel","","","")
+        user2 = iUsuario_persistencia("","","","")
+        usuariosAgregados = []
+
     def test_delete_usuario(self):
         usuarios = [
             {"name": "Angel", "apellido": "Helbingens", "mail": "angelo@gmail.com", "pwd": "6666"}
