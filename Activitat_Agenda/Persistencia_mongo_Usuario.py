@@ -12,7 +12,7 @@ class Persistencia_mongo_Usuario(IUsuarioPersistencia):
             "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
     conection = pymongo.MongoClient(uri)
     
-    def read_user(self, r) -> List[Usuario]:
+    def read_user(self) -> List[Usuario]:
         return list(self.conection.find())
     
     def read_user_valor(self, valor):
