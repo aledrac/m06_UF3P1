@@ -16,8 +16,8 @@ class Persistencia_mongo_Agenda(IAgenda_Persistencia):
     def read_agenda(self) -> List[Agenda]:
         return list(self.coleccio.find())
     
-    def read_agenda_id(self, name: str) -> List[Agenda]:
-        return list(self.coleccio.find({"name": name}))
+    def read_agenda_id(self, name: str):
+        return self.coleccio.find({"name": name})
     
     def save_agenda(self, agenda:Agenda):
         #user_cursor = self.coleccio2.find({"name": nameUser})

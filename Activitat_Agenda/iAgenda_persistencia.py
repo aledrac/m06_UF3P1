@@ -11,7 +11,7 @@ class IAgenda_Persistencia(ABC):
         pass
     
     @abstractmethod
-    def read_agenda_id(self, id: str) -> Agenda:
+    def read_agenda_id(self, id: str):
         pass
     
     @abstractmethod
