@@ -1,35 +1,34 @@
 import unittest
 from Agenda import Agenda
 from Eventos import Evento
-from Persistencia_mongo_Agenda import Persistencia_mongo_Agenda
 
-class TestPersistenciaAgenda(unittest.TestCase):
+class TestAgenda(unittest.TestCase):
     
     def setUp(self):
-        # Configura la persistencia de agenda
-        self.persistencia_agenda = Persistencia_mongo_Agenda()
-
-        # Crea datos de prueba
-        self.agenda_prueba = Agenda(name="Mi Agenda", listaEvents=[], listaUserS=[])
-
-    def test_guardar_leer_agenda(self):
-        # Guardar agenda
-        self.assertTrue(self.persistencia_agenda.save_agenda(self.agenda_prueba))
+        # Crear algunos eventos de ejemplo
+        self.evento1 = Evento(id=1, fecha="2024-05-01", duracion="2 horas", titulo="Reunión", tag="trabajo", ubicacion="Oficina")
+        self.evento2 = Evento(id=2, fecha="2024-05-02", duracion="1 hora", titulo="Entrevista", tag="trabajo", ubicacion="Zoom")
+        self.evento3 = Evento(id=3, fecha="2024-05-03", duracion="3 horas", titulo="Fiesta", tag="personal", ubicacion="Casa")
         
-        # Leer agenda
-        agendas = self.persistencia_agenda.read_agenda()
-        self.assertIsNotNone(agendas)
-        self.assertTrue(len(agendas) > 0)
+        # Crear una lista de eventos
+        self.lista_eventos = [self.evento1, self.evento2, self.evento3]
         
-    def test_actualizar_eliminar_agenda(self):
-        # Guardar agenda
-        self.assertTrue(self.persistencia_agenda.save_agenda(self.agenda_prueba))
+        # Crear una instancia de Agenda con los eventos de ejemplo
+        self.agenda = Agenda(name="Mi Agenda", listaEvents=self.lista_eventos, listaUserS=[])
+    
+    def test_name(self):
+        self.assertEqual(self.agenda.name, "Mi Agenda")
         
-        # Actualizar agenda
-        self.assertTrue(self.persistencia_agenda.update_agenda(name="Mi Agenda", agenda=self.agenda_prueba))
+    def test_listaEvents(self):
+        self.assertEqual(len(self.agenda.listaEvents), 3)  # Comprueba si hay 3 eventos en la lista
+    
+    def test_agregar_evento(self):
+        # Crea un nuevo evento y lo agrega a la agenda
+        nuevo_evento = Evento(id=4, fecha="2024-05-04", duracion="1 hora", titulo="Conferencia", tag="trabajo", ubicacion="Sala de conferencias")
+        self.agenda.toList(nuevo_evento)
+        self.assertEqual(len(self.agenda.listaEvents), 4)  # Comprueba si se ha agregado el nuevo evento
         
-        # Eliminar agenda
-        self.assertTrue(self.persistencia_agenda.delete_agenda(name="Mi Agenda"))
-        
-if __name__ == '__main__':
+    # Agrega más métodos de prueba según sea necesario
+    
+if _name_ == '_main_':
     unittest.main()
