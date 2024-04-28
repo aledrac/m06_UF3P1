@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
+from Eventos import Evento
 from Agenda import Agenda
 
 
@@ -14,7 +15,7 @@ class IAgenda_Persistencia(ABC):
         pass
     
     @abstractmethod
-    def save_agenda(self, agenda: Agenda):
+    def save_agenda(self, name:str, nameUser:str, evento:List[Evento]):
         pass
     
     @abstractmethod
