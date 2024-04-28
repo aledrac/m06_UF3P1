@@ -56,7 +56,7 @@ class TestAgenda(unittest.TestCase):
             user + ":" + pwd + \
             "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
         persistencia = Persistencia_mongo_Agenda(uri)
-        agenda1 = Agenda("agenda1", 
+        agenda1 = Agenda("agenda2", 
                       [["25-03-2024", "10 horas", "practica m6", "estudio", "barcelona", "test para mongodb"]], 
                       [["david", "hernandez", "david@gmail.com", "daviddavid"]])
         name = "agenda1"
@@ -71,7 +71,7 @@ class TestAgenda(unittest.TestCase):
             user + ":" + pwd + \
             "@" + cluster + ".mongodb.net/?retryWrites=true&w=majority"
         persistencia = Persistencia_mongo_Agenda(uri)
-        name = "agenda1"
+        name = "agenda2"
         deleted = persistencia.delete_agenda(name)
         self.assertTrue(deleted)
         
