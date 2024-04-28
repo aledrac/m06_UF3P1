@@ -64,6 +64,4 @@ class Persistencia_agenda_mongodb(IAgendaDigital):
     def delete_evento(self, id: int):
         self.conection.evento.delete_one({"_id": ObjectId(id)})
         #query = "db.agenda.remove({ _id: '1'})"
-    
-    def main():
-        
+

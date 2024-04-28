@@ -1,22 +1,13 @@
 import datetime
 
 class Evento:
-    def __init__(self, id: int,  fecha: str, duracion: str, titulo: str, tag: str, ubicacion: str, descripcion="" ) -> None:
-        self._id = id
+    def __init__(self, fecha: str, duracion: str, titulo: str, tag: str, ubicacion: str, descripcion="" ) -> None:
         self._fecha = fecha
         self._duracion = duracion
         self._titulo = titulo
         self._tag = tag
         self._ubicacion = ubicacion
         self._descripcion = descripcion
-    
-    @property
-    def id(self) -> int:
-        return self._id
-    
-    @id.setter
-    def id(self, id:int) -> None:
-        self._id = id
         
     @property
     def fecha(self) -> str:
