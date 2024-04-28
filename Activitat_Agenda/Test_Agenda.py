@@ -1,5 +1,7 @@
 import unittest
+from Usuario import Usuario
 from Persistencia_mongo_Agenda import Persistencia_mongo_Agenda
+from Persistencia_mongo_Usuario import Usuario_persistencia
 from Agenda import Agenda
 from Eventos import Evento
 
