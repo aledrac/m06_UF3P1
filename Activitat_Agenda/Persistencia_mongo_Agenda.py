@@ -1,6 +1,7 @@
 from typing import List
 import pymongo 
 from Agenda import Agenda
+from iAgenda_persistencia import IAgenda_Persistencia
 
 class Persistencia_mongo_Agenda(IAgenda_Persistencia):
     pwd = "Angel"
