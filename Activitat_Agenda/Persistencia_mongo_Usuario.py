@@ -16,12 +16,12 @@ class Usuario_persistencia():
         return guardado.acknowledged
 
     
-    def muestra_usuario(self,valor: str) -> Usuario: #XX
+    def muestra_usuario(self,valor: str) -> dict: #XX
         con = self.conectar_usuario()
         db = con.agendadb
         col = db.usuario
 
-        return col.find_one(valor)
+        return col.find({"name":valor})
 
     def update_usuario(self,user:Usuario,nombre:str) -> int: #XX
         con = self.conectar_usuario()
@@ -39,8 +39,8 @@ class Usuario_persistencia():
         db = con.agendadb
         col = db.usuario
 
-        deleted = col.delete_one(valor)
-        return deleted.deleted_count()
+        deleted = col.delete_one({"name":valor})
+        return deleted.deleted_count
 
     def conectar_usuario(self):
         client = pymongo.MongoClient(self.uri)
