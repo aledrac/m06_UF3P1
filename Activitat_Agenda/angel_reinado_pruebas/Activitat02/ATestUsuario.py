@@ -5,7 +5,25 @@ from AUsuario import AUsuario
 class AtestsUsuario(unittest.TestCase):
 
     def test_guarda_usuario(self):
-        persistencia = Usuario_persistencia()
-        us1 = AUsuario("Joel","Casas","Joel@gmail.com","1234")
-        resultado = persistencia.guarda_usuario(us1)
-        self.assertIsNotNone(resultado)
+        persist = Usuario_persistencia()
+        resultado = persist.guarda_usuario(AUsuario("Joel","Casas","Joel@gmail.com","1234"))
+        self.assertTrue(resultado)
+    
+    def test_update(self):
+        persist = Usuario_persistencia()
+
+        agregamos = persist.guarda_usuario(AUsuario("Angel","Helbingens","angel@gmail.com","1234"))
+        resultado = persist.update_usuario(AUsuario("Daniel","Casas","Daniel@gmail.com","1234"),"Angel")
+
+        resultado.assertTrue(resultado)
+        pass
+
+    def test_read(self):
+        persist = Usuario_persistencia()
+        
+        agregamos = persist.guarda_usuario(AUsuario("Lucas","Helbingens","Lucas@gmail.com","1234"))
+        mostraremos = persist.muestra_usuario("Lucas")
+
+    def test_delete(self):
+        persist = Usuario_persistencia()
+        pass
