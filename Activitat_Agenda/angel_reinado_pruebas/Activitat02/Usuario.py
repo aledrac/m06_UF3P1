@@ -6,7 +6,7 @@ class usuario(ABC):
     
     #region ///////Metodos principales
     @abstractmethod
-    def guarda_usuario( self,lista ) -> bool:
+    def guarda_usuario( self,lista ) -> int:
         pass
     
     @abstractmethod
