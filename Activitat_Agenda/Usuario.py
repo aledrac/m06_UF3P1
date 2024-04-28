@@ -1,44 +1,44 @@
-class Usuario():
-    def __init__(self, name:str, apellido:str, mail:str, pwd:str) -> None:
-        self.name = name
-        self.apellido = apellido
-        self.mail = mail
-        self.pwd = pwd
-    
 
+
+class Usuario():
+    
+    def __init__(self, name:str, apellido:str, mail:str, pwd:str) -> None:
+        self._name = name
+        self._apellido = apellido
+        self._mail = mail
+        self._pwd = pwd
+    
     @property
     def name(self) -> str:
-        return self.name
+        return self._name
     
     @name.setter
     def name(self, name:str):
-        self.name = name
+        self._name = name
         
     @property
     def apellido(self) -> str:
-        return self.apellido
+        return self._apellido
     
     @apellido.setter
     def apellido(self, apellido:str):
-        self.apellido = apellido
+        self._apellido = apellido
         
     @property
     def mail(self) -> str:
-        return self.mail
+        return self._mail
     
     @mail.setter
     def mail(self, mail:str):
-        self.mail = mail
+        self._mail = mail
         
     @property
     def pwd(self) -> str:
-        return self.pwd
+        return self._pwd
     
     @pwd.setter
     def pwd(self, pwd:str):
-        self.pwd = pwd
-        
+        self._pwd = pwd
+    
     def to_dict(self):
         return {"name": self.name, "apellido": self.apellido, "mail": self.mail, "pwd": self.pwd}
-        
-    

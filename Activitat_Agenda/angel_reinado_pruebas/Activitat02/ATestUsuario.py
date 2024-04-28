@@ -16,7 +16,6 @@ class AtestsUsuario(unittest.TestCase):
         resultado = persist.update_usuario(AUsuario("Daniel","Casas","Daniel@gmail.com","1234"),"Angel")
 
         self.assertEquals(resultado,0)
-        pass
 
     def test_read(self):
         persist = Usuario_persistencia()
@@ -26,4 +25,3 @@ class AtestsUsuario(unittest.TestCase):
 
     def test_delete(self):
         persist = Usuario_persistencia()
-        pass
